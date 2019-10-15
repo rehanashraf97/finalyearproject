@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/SampleScene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 0
+    path: Assets/Scenes/main_template.unity
+    guid: 335eed6707f7c6b449422127485d0a26
+  - enabled: 1
+    path: Assets/Scenes/landingscreen.unity
+    guid: 33e2eb828b77d664c8956c94e6602e99
+  - enabled: 1
+    path: Assets/Scenes/aboutus.unity
+    guid: dc005c91584005a468c2ad2718450298
+  - enabled: 1
+    path: Assets/Scenes/category.unity
+    guid: 9702c86bfe38d7042bd3a8bbaf36c25d
+  - enabled: 1
+    path: Assets/Scenes/productdetail.unity
+    guid: 78b355358d072b648ab382a8f05d926c
+  - enabled: 1
+    path: Assets/Scenes/signin_signup.unity
+    guid: 275e5ca04bbc594408f1d12d48074b82
+  - enabled: 1
+    path: Assets/Scenes/signin.unity
+    guid: f5974f4881ef877429c26178fa81fe7f
+  - enabled: 1
+    path: Assets/Scenes/signup.unity
+    guid: 6787add2ca5f13347be750eeb41bbf66
+  - enabled: 1
+    path: Assets/Scenes/userprofile.unity
+    guid: e4ec9582ae729bc46b685facb2f3901e
+  m_configObjects: {}
