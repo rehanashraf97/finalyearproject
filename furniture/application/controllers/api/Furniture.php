@@ -26,7 +26,7 @@ class Furniture extends REST_Controller {
 	public function signup_post()
 	{
     $this->form_validation->set_rules('token', 'Token', 'trim|required|callback_checkToken[token]');
-    $this->form_validation->set_rules('email', 'Email', 'trim|required|is_unique[users.email]');
+    $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[users.email]');
     $this->form_validation->set_rules('password', 'Password', 'trim|required');
     $this->form_validation->set_rules('first_name', 'First Name', 'trim|required');
     $this->form_validation->set_rules('last_name', 'Last Name', 'trim|required');
@@ -58,14 +58,15 @@ class Furniture extends REST_Controller {
         }else{
           $data = array(
             'status' => 0,
-            'code' => -1,
-            'msg' => 'Email Already Exist',
+            'code' => -2,
+            'msg' => 'Something Went Wrong',
             'data' => 'Failed to create user'
           );
         }
       }else
       {
-        $data['msg'] = validation_errors();
+        $data['code'] = -1;
+        $data['msg'] = strip_tags(validation_errors());
       }
       $this->response($data, REST_Controller::HTTP_OK);
 	  }
@@ -75,7 +76,7 @@ class Furniture extends REST_Controller {
   public function login_post()
   {
     $this->form_validation->set_rules('token', 'Token', 'trim|required|callback_checkToken[token]');
-    $this->form_validation->set_rules('email', 'Email', 'trim|required');
+    $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
     $this->form_validation->set_rules('password', 'Password', 'trim|required');
     $data = array(
       'status' => 0,
@@ -158,7 +159,7 @@ class Furniture extends REST_Controller {
   // GET the brand
   public function brand_get()
   {
-    $token = $_SERVER['HTTP_TOKEN'];
+    // $token = $_SERVER['HTTP_TOKEN'];
     $user_id = $this->input->get('user_id');
     $data = array(
       'status' => 0,
@@ -166,7 +167,7 @@ class Furniture extends REST_Controller {
       'msg' => 'Bad Request',
       'data' => null
     );
-    if($this->checkToken($token) === TRUE )
+    if(isset($user_id))
       {
         $getBrand = $this->Api_model->getBrand($user_id);
         if (isset($getBrand)) {
